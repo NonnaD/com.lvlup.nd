@@ -1,3 +1,5 @@
+package sorting;
+
 import java.util.Arrays;
 
 public class CountingSort {
@@ -7,9 +9,6 @@ public class CountingSort {
         countSort(arr, 0,9);
         System.out.println(Arrays.toString(arr));
 
-        int[] merge = new int[]{1,1,2,3,1,2,3,1,2,3,4,5,6,7,6,7,4,8,9,1,2,3,4,6};
-        MergeSort.mergeSort(merge, 0, merge.length);
-        System.out.println(Arrays.toString(merge));
 
     }
 
