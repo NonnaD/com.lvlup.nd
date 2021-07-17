@@ -12,7 +12,7 @@ public class Main {
         myHeap.insert(4);
         myHeap.insert(12);
 
-        //  System.out.println(myHeap);
+        System.out.println(myHeap);
 
 
     }
