@@ -6,6 +6,9 @@ public class BuildHeap {
 
     public static void main(String[] args) {
 
+      //  [22, 14, 15, 13, 3, 4, 12, 5]
+        //[22, 14, 15, 13, 3, 4, 12, 5]
+
         //BuildHeap
         //In heap leaves range start from n/2
         //so we can assume last internal-node, NOT leaf is n/2-1

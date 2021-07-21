@@ -79,7 +79,7 @@ public class HeapifyDown {
     }
 
     public static int findChildIndex(int[] arr, int parentIndex, String child){
-        //this adds additional comparation and increases T(n) replace with 2 function
+        //this adds additional compration and increases T(n) replace with 2 function
         int sideIndex = child.equals("left")?1:2;
         return 2*parentIndex + sideIndex;
     }
