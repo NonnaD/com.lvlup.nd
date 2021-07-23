@@ -1,10 +1,13 @@
 package recursion;
 
+import java.util.Arrays;
+
 public class NQueen {
 
 
     public static void main(String[] args) {
         int[][] arr = find_all_arrangements(4);
+        Arrays.stream(arr).forEach(ar -> System.out.println(Arrays.toString(ar)));
     }
 
     /**
@@ -17,8 +20,9 @@ public class NQueen {
      */
     static int[][] find_all_arrangements(int n) {
         int[][] arr = new int[n][n];
-        if (nqueen(n, 0, arr)) return arr;
-        else return new int[0][0];
+        if (nqueen(n, 0, arr)){
+            return arr;
+        }else return new int[0][0];
     }
 
     public static boolean nqueen(int n, int row, int[][] arr) {
@@ -28,7 +32,7 @@ public class NQueen {
         //we will use recursion to move between rows
         //we enter starting by row=0
         //for each row I want to iterate columns
-        for (int col = 0; col < row; col++){
+        for (int col = 0; col < n; col++){
             boolean isValid = true;
             //i want to check (INSPECT COLUMN) if I can place my queen at given combination row + column
             // i want to check for all queens added before this queen
@@ -68,7 +72,8 @@ public class NQueen {
                 // for (int col = 0; col < row; col++){
                 // we return at this point
                 // col ++ and we try to place our previous queen on position col+1
-                if(nqueen(n, ++row, arr)){
+                //do not use ++row use row + 1 instead
+                if(nqueen(n, row+1, arr)){
                     return true;
                 }
             }
