@@ -154,13 +154,13 @@ public class Node {
      *
      *      1. The minimum value in right subtree is successor
      * Minimum value in right subtree can be found:
-     * -> If subtree has left child - the last left child is the minimum
-     * -> If subtree does not have left child - first right ancestor will be the successor
+     * -> If right subtree of given node has left child - the last left child is the minimum
+     * -> If right subtree of given node does not have left child - first right ancestor will be the successor
      */
     public int successor() {
         int val = this.data;
         // Minimum value in right subtree can be found:
-        // If subtree has left child - the last left child is the minimum
+        // If right subtree has left child - the last left child is the minimum
         if (this.rightChild != null) {
             if (this.rightChild.leftChild != null
                     && downLastLeft(this.rightChild.leftChild).getData() != val) {

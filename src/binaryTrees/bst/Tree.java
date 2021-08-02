@@ -41,15 +41,6 @@ public class Tree {
         //but if i set toBeDeleted=null it will reassign toBeDeleted to null
         //But the node object will not change
         Node toBeDeleted =  deleteNode(this.root, value);
-
-        //so here to be deleted should hold reference
-        // to the parent of the node we want to deleted
-        //in this case i can change it's child property which is our node
-        //and set it to null
-        //it will unlink the node from it's parent - no more reference - GC will come after it
-
-        //And toBeDeleted does not make sense it's actually toBeDeletedParent
-
     }
 
     private Node deleteNode(Node root, int val){
@@ -58,17 +49,36 @@ public class Tree {
             return root;
         }
         if (val > root.getData()) {
-            System.out.println("rc " + root.getRightChild().getData());
-            root = deleteNode(root.getRightChild(), val);
+            //IMPORTANT! this statement will be executed for parent nodes but never for the node we want to delete
+            root.setRightChild(deleteNode(root.getRightChild(), val));
         }else if (val < root.getData()){
-            System.out.println("lc " + root.getLeftChild().getData()) ;
-           root = deleteNode(root.getLeftChild(), val);
+            //IMPORTANT! this statement will be executed for parent nodes but never for the node we want to delete
+            root.setLeftChild(deleteNode(root.getLeftChild(), val));
+            //IMPORTANT! this statement will be execute only when - we find node that we want to delete
         }else if (root.getData() == val){
-            //for leaf node - node with 0 children
-            if (root.getRightChild() == null){
-                return root;
+            if (root.getRightChild() == null && root.getLeftChild() == null){
+                //this null value will be sent back to it's parent and depend on which side node was located
+                //parent node -> child = null
+                return null;
+            }
+            else if (root.getRightChild() == null || root.getLeftChild() == null){
+                //this will handle case when node we want to delete has one of the children
+                Node single = root.getRightChild() == null ? root.getLeftChild() : root.getRightChild();
+                return single;
             }
 
+            //case 3: Node has both children
+            //We are not going to actually rewire our node, just replace the value of node we want to delete
+            //with value of successor (min value in right child)
+            else {
+                //successor - find the smallest element in the right subtree of my node
+                int smallestInRightSubtree  = root.successor();
+                //i reassign data in the node i want to delete with smallest element in its right subtree
+                root.setData(smallestInRightSubtree);
+                //last step is delete successor from the tree
+                //IMPORTANT:
+                root.setRightChild(deleteNode(root.getRightChild(), root.getData()));
+            }
         }
         return root;
     }
@@ -86,7 +96,6 @@ public class Tree {
         Node node = get(val);
         Node lastRight = root.getLastRight(val, new Node(-1));
         if (node.successor() == -1){
-            System.out.println(lastRight.getData() + " ddd");
             return lastRight.getData();
         } else return node.successor();
         }

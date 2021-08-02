@@ -21,12 +21,12 @@ public class Main {
 //        System.out.println(" elem = " + tree.get(15).getRightChild().getData());
 //
         tree.inOrderTraverse();
-        tree.delete(15);
-        System.out.println(tree.get(15) + " fjghjfkdfjgfkd");
+        tree.delete(27);
+        System.out.println();
         tree.inOrderTraverse();
     //    Arrays.stream(pt).forEach(tree::insert);
 
-//        System.out.println(tree.successor(22));
+        //System.out.println(tree.successor(27));
 
 
         //Level by level traverse - BFS - uses quee DS
