@@ -4,6 +4,14 @@ public class Tree {
     private Node root;
     private int[] treeNodes;
 
+    public Node getRoot() {
+        return root;
+    }
+
+    public void setRoot(Node root) {
+        this.root = root;
+    }
+
     public void insert(int value){
         if(root == null){
             root = new Node(value);

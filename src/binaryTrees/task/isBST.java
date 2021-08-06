@@ -1,4 +1,4 @@
-package binaryTrees;
+package binaryTrees.task;
 
 import binaryTrees.bst.Node;
 import binaryTrees.bst.Tree;
