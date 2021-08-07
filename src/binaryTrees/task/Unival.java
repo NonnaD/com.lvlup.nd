@@ -3,13 +3,15 @@ package binaryTrees.task;
 import binaryTrees.bst.Node;
 import binaryTrees.bst.Tree;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Unival {
 
     public static void main(String[] args) {
         int[] pt = new int[]{5,5,5,5,5,4,5};
-
         Tree tree = new Tree();
         Arrays.stream(pt).forEach(tree::insert);
 

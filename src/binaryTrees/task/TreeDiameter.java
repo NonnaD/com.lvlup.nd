@@ -22,7 +22,6 @@ public class TreeDiameter {
         diameter(tree.getRoot(), arr);
         System.out.println(Collections.max(arr));
 
-
     }
 
     private static int diameter(Node root, ArrayList<Integer> arr){

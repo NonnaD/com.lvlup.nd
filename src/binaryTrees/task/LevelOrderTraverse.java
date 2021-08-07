@@ -3,10 +3,7 @@ package binaryTrees.task;
 import binaryTrees.bst.Node;
 import binaryTrees.bst.Tree;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class LevelOrderTraverse {
     public static void main(String[] args) {
@@ -22,6 +19,7 @@ public class LevelOrderTraverse {
 //        System.out.println(que.peek());
 
 
+
         /**
          * Level order traversal
          * See illustration --> src/binaryTrees/bst/visual/level-order-traversal.png
@@ -30,8 +28,12 @@ public class LevelOrderTraverse {
 
         Tree tree = new Tree();
         Queue<Node> nodeKeeper = new LinkedList<>();
+
         Arrays.stream(pt).forEach(tree::insert);
-        levelOrderTraverse(tree.getRoot(), nodeKeeper);
+//        levelOrderTraverse(tree.getRoot(), nodeKeeper);
+
+
+        level_order_traversal(tree.getRoot());
     }
 
     public static void levelOrderTraverse(Node root, Queue<Node> keep){
@@ -53,5 +55,46 @@ public class LevelOrderTraverse {
             }
         }
 
+    }
+
+
+    /**
+     * Level order traverse
+     * Add nodes to arrays level by level
+     * @param root
+     * @return
+     */
+    public static List<List<Integer>> level_order_traversal(Node root) {
+        List<List<Integer>> keeper = new ArrayList<>();
+        Queue<Node> queue = new LinkedList<>();
+        levelOrder(root, keeper, queue);
+
+        for (List<Integer> ke:keeper){
+            ke.stream().forEach(n-> System.out.println(n));
+            System.out.println();
+        }
+        return keeper;
+    }
+
+    public static void levelOrder(Node root, List<List<Integer>> keep, Queue<Node> qu) {
+        qu.offer(root);
+        while (!qu.isEmpty()){
+            List<Integer> level = new ArrayList<Integer>();
+            int size = qu.size();
+            for (int i = 0; i < size; i++){
+                Node temp = qu.poll();
+                level.add(temp.getData());
+                if (temp.getLeftChild() != null){
+                    qu.offer(temp.getLeftChild());
+                }
+                if (temp.getRightChild() != null){
+                    qu.offer(temp.getRightChild());
+                }
+            }
+            //if i change this     keep.add(level); ->     keep.add(0, level);
+            //instead of adding to the end it will add to the beginning of list
+            //and we will get level order from bottom up
+            keep.add(level);
+        }
     }
 }
