@@ -33,27 +33,39 @@ public class MergeTwoBSTIntoBalancesTree {
         int o = sortedOne.size() -1;
         int t = sortedTwo.size() -1;
         while (m-- >= 0){
-            merged.add(o < 0 ||(t >= 0 && sortedTwo.get(t).getData() >= sortedOne.get(o).getData())?sortedTwo.get(t--):sortedOne.get(o--));
+            merged.add(o < 0 ||(t >= 0 && sortedTwo.get(t).getData() < sortedOne.get(o).getData())?sortedTwo.get(t--):sortedOne.get(o--));
         }
 
-        //merged.forEach(kl -> System.out.println(kl.getData() + ","));
-
         //Step 4: Create new balanced tree out of merged sorted list
-        //TODO:
+        //add 2 pointers to the middle of list
+        //1 moves from mid --> begining second from mid --> end
+        Tree balanced = new Tree();
+        balanced.insert(merged.get(merged.size()/2).getData());
+        for (int i = merged.size()/2, k = merged.size()/2; i > 0 || k < merged.size(); --i, ++k){
+            if (i >= 0){
+                balanced.insert(merged.get(i).getData());
+            }
+            if (k < merged.size()){
+                balanced.insert(merged.get(k).getData());
+            }
+        }
+
+        ArrayList<Node> balancedlist = new ArrayList<>();
+        inOrderTraverse(balanced.getRoot(), balancedlist);
+
+        balancedlist.forEach(kl -> System.out.print(kl.getData() + ","));
+
     }
 
     /**
      * In order traverse returns a sorted list of nodes
      */
     public static void inOrderTraverse(Node root, ArrayList<Node> list){
-        if (root == null) return;
+      if (root == null) return;
 
-        if (root.getRightChild()!= null) {
-            inOrderTraverse(root.getLeftChild(), list);
-        }
-        list.add(root);
-        if (root.getRightChild()!=null) {
-            inOrderTraverse(root.getRightChild(), list);
-        }
+      inOrderTraverse(root.getRightChild(), list);
+      list.add(root);
+      inOrderTraverse(root.getLeftChild(), list);
+
     }
 }
