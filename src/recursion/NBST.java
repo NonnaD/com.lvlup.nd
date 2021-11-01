@@ -20,10 +20,10 @@ public class NBST {
      * @return long number of unique trees
      */
     static long how_many_BSTs(int n) {
-        if (n <= 1) return 1;
+        if(n <= 1) return 1;
         long catalan = 0;
-        for (int i =0; i < n; i++){
-            catalan = catalan + how_many_BSTs(i) * how_many_BSTs(n - i -1);
+        for (int i = 0; i < n; i ++){
+            catalan = catalan + how_many_BSTs(i) * how_many_BSTs(n - 1 - i);
         }
         return catalan;
     }

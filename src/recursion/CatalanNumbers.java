@@ -4,7 +4,7 @@ public class CatalanNumbers {
 
     public static void main(String[] args) {
 
-        System.out.println(catalanNum(4));
+        System.out.println(catalanNum(5));
 
     }
 
@@ -23,6 +23,12 @@ public class CatalanNumbers {
      *
      *    i        ------------>     n - 1
      *    n-i-1    <------------     n - n - 1
+     *
+     *    0 1 2 3  4    - catalan sequence starts from 0
+     *
+     *    1  1 2 5 14
+     *                catalan 5 = 1*14 + 1*5 + 2*2 + 5*1 + 14*1 = 14 + 5 + 4 + 5 + 14 = 42
+     *    14 5 2 1 1
      */
     public static int catalanNum(int n){
         if (n <= 1) return 1;
