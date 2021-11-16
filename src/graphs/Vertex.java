@@ -1,4 +1,4 @@
-package graphs.BDFS;
+package graphs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +33,18 @@ public class Vertex {
 
     public void addNeighbour(Vertex ...neibs){
         neighbours.addAll(Arrays.asList(neibs));
+    }
+
+    public void setNeighbours(List<Vertex> neighbours) {
+        this.neighbours = neighbours;
+    }
+
+    public boolean isVisited() {
+        return isVisited;
+    }
+
+    public void setVisited(boolean visited) {
+        isVisited = visited;
     }
 
     @Override
