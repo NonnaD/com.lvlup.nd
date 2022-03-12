@@ -3,7 +3,7 @@ package graphs.shortestPath.nonnasimpl;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Vertex implements Comparable<Vertex>{
+public class Vertex{
     String value;
     boolean isVisited;
     int distance;
@@ -61,8 +61,4 @@ public class Vertex implements Comparable<Vertex>{
         return this.value;
     }
 
-    @Override
-    public int compareTo(Vertex other){
-        return Integer.compare(this.distance, other.distance);
-    }
 }

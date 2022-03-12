@@ -2,7 +2,8 @@ package recursion;
 
 public class NBST {
     public static void main(String[] args) {
-        System.out.println(how_many_BSTs(4));
+        System.out.println(nonUnique(3));
+        System.out.println(how_many_BSTs(3));
     }
 
     /**
@@ -27,4 +28,20 @@ public class NBST {
         }
         return catalan;
     }
+
+    /** For each unique BT we can have catalan(n) * n! non - unique  BT
+     *  Number of non unique BT = Catalan(n) * n!
+     * @return
+     */
+    static long nonUnique(int n){
+        long nonUnique  = how_many_BSTs(n) *  factorial(n);
+        return nonUnique;
+    }
+
+    static long factorial(long n){
+        if(n <= 1) return 1;
+        return n * factorial(n-1);
+    }
 }
+
+

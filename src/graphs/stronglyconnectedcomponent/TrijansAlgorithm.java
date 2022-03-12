@@ -52,7 +52,8 @@ public class TrijansAlgorithm {
          *               And this new property will be called - LOW LEVEL LINK by default it equals to discovery time
          *               But this assignment should happen on the way back fro dfs so each vertex for sure got the lowest value
          *
-         *            1. If discovery time == low level vertex is head of SCC strongly connected component
+         *            1. If discovery time == low level -> vertex is head of SCC strongly connected component
+         *            2. If discovery time > low level -> backward edge present
          *            2. If Edge is pointing to a visited node already in stack than  - it's a BACK EDGE
          *            3. If edge is pointing to the visited not which gone from stack - it's a CROSS EDGE
          */

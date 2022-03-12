@@ -4,7 +4,7 @@ public class CatalanNumbers {
 
     public static void main(String[] args) {
 
-        System.out.println(catalanNum(5));
+        System.out.println(catalanNum(6));
 
     }
 

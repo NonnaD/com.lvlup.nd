@@ -1,5 +1,6 @@
 package graphs.shortestPath.nonnasimpl;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Dijkstra {
@@ -42,7 +43,8 @@ public class Dijkstra {
          * Priority Queue will return Vertex with min distance value - PriorityQueue works as a minheap
          * Because we provided Comparator implementation in Vertex class
          */
-        PriorityQueue<Vertex> queue = new PriorityQueue<>();
+        //Instead of implementing comparator witin Vertex class we can provide it as a FI in PQ
+        PriorityQueue<Vertex> queue = new PriorityQueue<>((i , j) -> i.distance - j.distance);
         queue.add(a);
 
         while (!queue.isEmpty()){

@@ -1,47 +1,47 @@
 create database Nola;
 use Nola;
-create table Student(pid int NOT NULL, fname varchar(255), lname varchar(255), primary key (pid));
+create table miscel.Student(pid int NOT NULL, fname varchar(255), lname varchar(255), primary key (pid));
 use Nola;
-alter table Student add dob date;
+alter table miscel.Student add dob date;
 show tables;
-create table Class(did int, diagnos varchar(255), pid int, primary key (did), foreign key(pid) references Student(pid));
+create table Class(did int, diagnos varchar(255), pid int, primary key (did), foreign key(pid) references miscel.Student(pid));
 alter table Class add icd10 varchar(255);
 update Class set icd10='C33.23 Test ICD' where did >= 1;
 
-insert into Student values (1, 'Alex', 'Smith', '1987-01-09');
-insert into Student values (2, 'Maria', 'Gonzalez', '1945-05-06');
-insert into Student values (3, 'Mario', 'Lopez', '1935-07-02');
+insert into miscel.Student values (1, 'Alex', 'Smith', '1987-01-09');
+insert into miscel.Student values (2, 'Maria', 'Gonzalez', '1945-05-06');
+insert into miscel.Student values (3, 'Mario', 'Lopez', '1935-07-02');
 
 insert into Class values (1, 'Penut allergy', 1);
 insert into Class values (2, 'Sore throat', 2);
 insert into Class values (3, 'PIS', 3);
 
-select p.fname, p.dob from Student p
+select p.fname, p.dob from miscel.Student p
 left join Class d
 on p.pid=d.pid;
 
-select p.fname, p.dob from Student p
+select p.fname, p.dob from miscel.Student p
 inner join Class d
 ON p.pid=d.pid order by p.lname DESC;
 
-select p.fname, p.dob from Student p
+select p.fname, p.dob from miscel.Student p
 right join Class d
 on p.pid=d.pid  where p.pid>1;
 
-insert into Student values (4, 'Lena', 'Popova', '1965-03-23');
+insert into miscel.Student values (4, 'Lena', 'Popova', '1965-03-23');
 
-select * from Student p
+select * from miscel.Student p
 left join Class d
 on p.pid=d.pid;
 
-select sum(pid) from Student;
-select count(pid) from Student;
-select max(fname) from Student;
+select sum(pid) from miscel.Student;
+select count(pid) from miscel.Student;
+select max(fname) from miscel.Student;
 
-select * from Student where dob  like "19%" and lname like "%ez";
-select * from Student where pid between 2 and 3;
+select * from miscel.Student where dob  like "19%" and lname like "%ez";
+select * from miscel.Student where pid between 2 and 3;
 
-select * from Student
+select * from miscel.Student
 union all
 select * from Class;
 
