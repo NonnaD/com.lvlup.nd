@@ -1,4 +1,4 @@
-#Algorithms and Data Structures [Java]
+# Algorithms and Data Structures [Java]
 
 Here you can find algorithms implemented in Java.
 These implementations are intended for learning purposes only.
@@ -13,4 +13,4 @@ You can run, clone or propose your implementation.
 
 I keep updating the repository with new problems.
 
-For more interesting problems and solutions: https://leetcode.com/NonnaD/
+## For more interesting problems and solutions: https://leetcode.com/NonnaD/
