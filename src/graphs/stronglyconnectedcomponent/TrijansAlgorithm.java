@@ -42,11 +42,7 @@ public class TrijansAlgorithm {
 
         /**
          * IMPORTANT! Once upon a time ... in some area 5 Vertices were born and they got connected into graph.
-         *            Then Nonna came and visited each of them in dfs order
-         *            While visiting she assigned them some values called DiscoveryTime
-         *            DiscoveryTime - order in which she visited them from 0 -> num of all vertices
-         *              Once Nonna left the town - Vertices decided to unite in the groups called - Strongly connected components or SCC
-         *              How do they split into SSC groups?
+         *
          *               So each vertex should go to all its neighbours
          *               and assigned itself the lowLevel of it's neighbour if it's less then it's own lowLevel
          *               And this new property will be called - LOW LEVEL LINK by default it equals to discovery time
