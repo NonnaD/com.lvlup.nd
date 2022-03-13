@@ -44,7 +44,7 @@ public class Dijkstra {
          * Because we provided Comparator implementation in Vertex class
          */
         //Instead of implementing comparator witin Vertex class we can provide it as a FI in PQ
-        PriorityQueue<Vertex> queue = new PriorityQueue<>((i , j) -> i.distance - j.distance);
+        PriorityQueue<Vertex> queue = new PriorityQueue<>((i , j) -> j.distance - i.distance);
         queue.add(a);
 
         while (!queue.isEmpty()){
