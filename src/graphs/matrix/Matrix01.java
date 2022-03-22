@@ -7,7 +7,12 @@ public class Matrix01 {
     Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell.
     The distance between two adjacent cells is 1.
     Input: mat = [[0,0,0],[0,1,0],[0,0,0]]
-    Output: [[0,0,0],[0,1,0],[0,0,0]]*/
+    Output: [[0,0,0],[0,1,0],[0,0,0]]
+
+    My observation: for shortest path problems in matrix. like this problem or  994. Rotting Oranges
+    BFS is a better solution TC is O(N * M)
+    This kind of problem can also be solved using DP(tabulation) approach  or BFS with memoization
+    */
 
    // We can see that the distance of all zero-cells are 0.
    // We process zero-cells first, then we use queue data structure to keep the order of processing cells, so that cells which have the smaller distance will be processed first. Then we expand the unprocessed neighbors of the current processing cell and push into our queue.
